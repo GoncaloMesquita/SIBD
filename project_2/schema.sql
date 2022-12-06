@@ -1,6 +1,21 @@
 DROP TABLE IF EXISTS Location,Trip,Reservation,
     Boat,Date_interval,Country, Boat_Class, Sailing_Certificate CASCADE ;
 
+CREATE TABLE Boat_Class(
+    name VARCHAR(80),
+    max_length NUMERIC(12,4) NOT NULL,
+    PRIMARY KEY(name)
+);
+
+CREATE TABLE Country(
+    name VARCHAR(80),
+    flag VARCHAR(80) NOT NULL,
+    ISO_code INTEGER,
+    PRIMARY KEY(name),
+    UNIQUE(flag),
+    UNIQUE(ISO_code)
+);
+
 CREATE TABLE Boat(
     boat_cni VARCHAR(80),
     name VARCHAR(80) NOT NULL,
@@ -10,8 +25,9 @@ CREATE TABLE Boat(
     boat_class_name VARCHAR(80) NOT NULL,
 
     PRIMARY KEY (boat_cni,country_name),
-    FOREIGN KEY (boat_class_name) REFERENCES Boat_Class(boat_class_name),
-    FOREIGN KEY (country_name) REFERENCES Country(country_name)
+    FOREIGN KEY (boat_class_name) REFERENCES Boat_Class(name),
+    FOREIGN KEY (country_name) REFERENCES Country(name),
+    UNIQUE(boat_cni)
 );
 
 CREATE TABLE Date_interval(
@@ -35,7 +51,8 @@ CREATE TABLE Location(
     location_longitude VARCHAR(80),
     country_name VARCHAR(80) NOT NULL,
     PRIMARY KEY (location_latitude,location_longitude),
-    FOREIGN KEY (country_name) REFERENCES Country(country_name)
+    FOREIGN KEY (country_name) REFERENCES Country(name),
+    UNIQUE(location_name)
     -- Any two locations must be at least one nautical mile apart
 );
 
@@ -56,7 +73,7 @@ CREATE TABLE Trip(
 
     FOREIGN KEY (boat_cni,date_inter_start,date_inter_end)
         REFERENCES Reservation(boat_cni,date_inter_start,
-                               date_inter_end)
+                               date_inter_end),
 
     FOREIGN KEY (location_to) REFERENCES Location(location_name),
     FOREIGN KEY (location_from) REFERENCES Location(location_name),
@@ -65,21 +82,6 @@ CREATE TABLE Trip(
     -- A boat can not take off on a trip before the reservation start date.
     -- The skipper must be an authorized sailor of the corresponding reservation.
     -- A boat can not take off on a trip before the reservation start date.
-);
-
-CREATE TABLE Country(
-    name VARCHAR(80),
-    flag VARCHAR(80) NOT NULL,
-    ISO_code INTEGER,
-    PRIMARY KEY(name),
-    UNIQUE(flag),
-    UNIQUE(ISO_code)
-);
-
-CREATE TABLE Boat_Class(
-    name VARCHAR(80),
-    max_length NUMERIC(12,4) NOT NULL,
-    PRIMARY KEY(name)
 );
 
 CREATE TABLE Sailing_Certificate(
