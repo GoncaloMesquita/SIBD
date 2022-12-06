@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS table;
+
+CREATE TABLE table(
+    id INTEGER,
+    PRIMARY KEY (id)
+);
