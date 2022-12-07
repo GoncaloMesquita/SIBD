@@ -101,9 +101,10 @@ CREATE TABLE Sailing_Certificate(
 CREATE TABLE valid_for(
     country_name VARCHAR(80) NOT NULL,
     issue_date DATE NOT NULL,
-    boat_name VARCHAR(80) NOT NULL,
-    PRIMARY KEY(country_name, issue_date, boat_name),
+    sailor_email VARCHAR(80) NOT NULL,
+    PRIMARY KEY(country_name, issue_date, sailor_email),
     FOREIGN KEY(country_name) REFERENCES Country(name),
     FOREIGN KEY(issue_date) REFERENCES Sailing_Certificate(issue_date),
-    FOREIGN KEY(boat_name) REFERENCES Sailing_Certificate(boat_name)
+    --uncomment after sailor is defined
+    --FOREIGN KEY(sailor_email) REFERENCES sailor(email),
 );
