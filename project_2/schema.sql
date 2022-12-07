@@ -76,8 +76,8 @@ CREATE TABLE Trip(
                                date_inter_end),
 
     FOREIGN KEY (location_to) REFERENCES Location(location_name),
-    FOREIGN KEY (location_from) REFERENCES Location(location_name),
-    FOREIGN KEY (skipper_email) REFERENCES Sailor(sailor_email)
+    FOREIGN KEY (location_from) REFERENCES Location(location_name)
+    --FOREIGN KEY (skipper_email) REFERENCES Sailor(sailor_email)
 
     -- A boat can not take off on a trip before the reservation start date.
     -- The skipper must be an authorized sailor of the corresponding reservation.
@@ -105,6 +105,5 @@ CREATE TABLE valid_for(
     PRIMARY KEY(country_name, issue_date, boat_name),
     FOREIGN KEY(country_name) REFERENCES Country(name),
     FOREIGN KEY(issue_date) REFERENCES Sailing_Certificate(issue_date),
-    FOREIGN KEY(boat_name) REFERENCES Sailing_Certificate(boat_name),
-    UNIQUE(country_name)
+    FOREIGN KEY(boat_name) REFERENCES Sailing_Certificate(boat_name)
 );
