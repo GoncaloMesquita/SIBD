@@ -3,24 +3,15 @@ INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Portugal','
 INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Espanha','esp_flag','ESP');
 
 
-
-
-
-
-
 -- Inserting values into Location
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Porto', 'N39º546.89', 'W008º234.987', 'Portugal');
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Lisboa', 'N36º234.08', 'W008º234.987','Portugal');
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Viana', 'N39º546.89', 'W008º290.459','Portugal');
 
 
-
-
-
 -- Inserting values into Boat_Class
 INSERT INTO boat_class (boat_class_name, max_length) VALUES ('Class 1', 15);
 INSERT INTO boat_class (boat_class_name, max_length) VALUES ('Class 2', 25);
-
 
 
 -- Inserting values into Boat
@@ -30,14 +21,7 @@ INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_nam
 INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('142359879', 2000, 'Class 1', 'Portugal', 20, 'Los Santos');
 
 
-
-
-
-
-
-
 -- Inserting values into Sailor
-
 INSERT INTO Sailor (email, surname, first_name) VALUES ('joaosilva@gmail.com', 'Silva', 'João');
 INSERT INTO Sailor (email, surname, first_name) VALUES ('pedrocabral@gmail.com', 'Cabral', 'Pedro');
 INSERT INTO Sailor (email, surname, first_name) VALUES ('vascogama@gmail.com', 'Gama', 'Vasco');
@@ -46,13 +30,7 @@ INSERT INTO Sailor (email, first_name, surname) VALUES ('santos@email.com','sant
 INSERT INTO Sailor (email, first_name, surname) VALUES ('santos2@email.com','santos2', 'Santos');
 
 
-
-
-
-
-
--- Inserting the sailor into Senior or Junior
-
+-- Inserting the sailor into Senior 
 INSERT INTO Senior (email) VALUES ('pedrocabral@gmail.com');
 INSERT INTO Senior (email) VALUES ('vascogama@gmail.com');
 INSERT INTO Senior (email) VALUES ('diogocao@gmail.com');
@@ -60,28 +38,15 @@ INSERT INTO Senior (email) VALUES ('santos@email.com');
 INSERT INTO Senior (email) VALUES ('santos2@email.com');
 
 
+-- Inserting the sailor into Junior
 INSERT INTO Junior (email) VALUES ('joaosilva@gmail.com');
 
 
-
-
-
---INSERT INTO Senior (email) VALUES ('fasdsaf@gmail.com'); -- Supposed not to work, theres is no sailor with this email
-
-
-
-
-
-
 -- Inserting values into Date_interval
-
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-01', '2022-12-02');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-03', '2022-12-04');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-01', '2022-12-03');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-11-01', '2022-11-02');
-
-
-
 
 
 -- Inserting values into Reservation
@@ -93,19 +58,14 @@ INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('
 INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('123456789', '2022-11-01', '2022-11-02', 'santos@email.com');
 
 
-
 -- Inserting Sailor in the reservation
-
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('pedrocabral@gmail.com','123456789', '2022-12-01', '2022-12-02');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('joaosilva@gmail.com','987654321', '2022-12-01', '2022-12-02');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('diogocao@gmail.com','123456789', '2022-12-03', '2022-12-04');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('diogocao@gmail.com','123456789', '2022-12-01', '2022-12-03');
 
 
-
-
 -- Inserting values into Trip
-
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
     ('2022-12-01','2022-12-02', '123456','123456789','2022-12-01','2022-12-02','Porto','Lisboa','pedrocabral@gmail.com');
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
@@ -113,8 +73,8 @@ INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_dat
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
     ('2022-12-12','2022-12-13', '123467','142359879','2022-12-01','2022-12-02','Porto','Viana','santos@email.com');
 
--- Inserting Sailing Certification to each sailor
 
+-- Inserting Sailing Certification to each sailor
 INSERT INTO Sailing_Certificate(boat_class_name, email, issue_date, expiry_date)  VALUES ('Class 1', 'pedrocabral@gmail.com', '2015-11-08','2025-11-08' );
 INSERT INTO Sailing_Certificate(boat_class_name, email, issue_date, expiry_date)  VALUES ('Class 1', 'vascogama@gmail.com', '2014-11-08','2024-11-08' );
 INSERT INTO Sailing_Certificate(boat_class_name, email, issue_date, expiry_date)  VALUES ('Class 1', 'joaosilva@gmail.com', '2018-11-08','2028-11-08' );
