@@ -61,11 +61,11 @@ CREATE TABLE Reservation(
     boat_cni VARCHAR(80),
     date_inter_start DATE,
     date_inter_end DATE,
-    responsible_for VARCHAR(80) NOT NULL ,
+    responsible_sailor VARCHAR(80) NOT NULL ,
     PRIMARY KEY (boat_cni,date_inter_start,date_inter_end),
     FOREIGN KEY (date_inter_start,date_inter_end) REFERENCES Date_interval(date_inter_start,date_inter_end),
     FOREIGN KEY (boat_cni) REFERENCES Boat(boat_cni),
-    FOREIGN KEY (responsible_for) REFERENCES Senior(email)
+    FOREIGN KEY (responsible_sailor) REFERENCES Senior(email)
     --Every	reservation	must have at least one 'sailor'
 );
 
