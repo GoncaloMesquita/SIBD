@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS Trip,Reservation,Location,
+    Boat,Date_interval,Country, Boat_Class,
+    Sailing_Certificate, valid_for,
+    Senior, Junior, Sailor,Authorized;
 
 CREATE TABLE Boat_Class(
     boat_class_name VARCHAR(80),
@@ -133,7 +137,7 @@ CREATE TABLE valid_for(
 );
 
 
-CREATE TABLE Authorization (
+CREATE TABLE Authorized(
     email VARCHAR(254),
     boat_cni VARCHAR(80),
     date_inter_start DATE,
