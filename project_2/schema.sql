@@ -1,86 +1,77 @@
 DROP TABLE IF EXISTS Location,Trip,Reservation,
     Boat,Date_interval,Country, Boat_Class, 
     Sailing_Certificate, valid_for,
-    Senior, Junior, Sailor,Authorized;
+    Senior, Junior, Sailor, Authorized CASCADE;
 
 
-CREATE TABLE Sailor(
-    email VARCHAR(254),
-    surname VARCHAR(15) NOT NULL,
-    first_name VARCHAR(15) NOT NULL,
-
-    PRIMARY KEY(email)
-    -- Sailors must be 'Junior' or 'Senior'
-    -- No sailor can exist at the same time in both tables 'Junior' and 'Senior'
-);
-
-CREATE TABLE Junior(
-    email VARCHAR(254),
-
-    PRIMARY KEY (email),
-
-    FOREIGN KEY (email) REFERENCES Sailor(email)
-);
-
-CREATE TABLE Senior(
-    email VARCHAR(254),
-
-    PRIMARY KEY (email),
-
-    FOREIGN KEY (email) REFERENCES Sailor(email)
-);
 
 CREATE TABLE Boat_Class(
     boat_class_name VARCHAR(80),
-    max_length NUMERIC(5) NOT NULL,
-
+    max_length NUMERIC(12,4) NOT NULL,
     PRIMARY KEY(boat_class_name)
 );
 
 CREATE TABLE Country(
     country_name VARCHAR(80),
     country_flag VARCHAR(80) NOT NULL,
-    country_ISO VARCHAR(40) NOT NULL,
-
+    country_ISO VARCHAR(80) NOT NULL,
     PRIMARY KEY(country_name),
-
     UNIQUE(country_flag),
     UNIQUE(country_ISO)
 );
 
 CREATE TABLE Boat(
+    boat_name VARCHAR(80) NOT NULL,
     boat_cni VARCHAR(80),
-    length INTEGER NOT NULL,
-    registration_year NUMERIC(4,0) NOT NULL,
+    boat_length INTEGER NOT NULL,
+    boat_registration_year NUMERIC(4) NOT NULL,
     country_name VARCHAR(80) NOT NULL,
     boat_class_name VARCHAR(80) NOT NULL,
 
     PRIMARY KEY (boat_cni,country_name),
-
     FOREIGN KEY (boat_class_name) REFERENCES Boat_Class(boat_class_name) ,
     FOREIGN KEY (country_name) REFERENCES Country(country_name),
-
     UNIQUE(boat_cni)
 );
 
-CREATE TABLE Date_Interval(
+CREATE TABLE Date_interval(
     start_date DATE,
     end_date DATE,
-
     PRIMARY KEY (start_date,end_date)
+);
+
+CREATE TABLE Sailor(
+    email VARCHAR(254),
+    surname VARCHAR(15) NOT NULL,
+    first_name VARCHAR(15) NOT NULL,
+    PRIMARY KEY(email)
+    --No sailor can exist at the same time in both tables 'Junior' and 'Senior'.
+    --
+);
+
+CREATE TABLE Junior(
+    email VARCHAR(254),
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES Sailor(email)
+);
+
+CREATE TABLE Senior(
+    email VARCHAR(254),
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES Sailor(email)
 );
 
 CREATE TABLE Reservation(
     boat_cni VARCHAR(80),
     start_date DATE,
     end_date DATE,
-    senior_email VARCHAR(80) NOT NULL ,
-
+    responsible_for VARCHAR(80) NOT NULL ,
     PRIMARY KEY (boat_cni,start_date,end_date),
-
     FOREIGN KEY (start_date,end_date) REFERENCES Date_interval(start_date,end_date),
     FOREIGN KEY (boat_cni) REFERENCES Boat(boat_cni),
-    FOREIGN KEY (senior_email) REFERENCES Senior(email)
+    FOREIGN KEY (responsible_for) REFERENCES Senior(email)
+    --Every	reservation	must have at least one 'Senior sailor'
+    --Every reservation must have at least one 'authorization' from a sailor
 );
 
 CREATE TABLE Location(
@@ -88,11 +79,8 @@ CREATE TABLE Location(
     location_latitude VARCHAR(80),
     location_longitude VARCHAR(80),
     country_name VARCHAR(80) NOT NULL,
-
     PRIMARY KEY (location_latitude,location_longitude),
-
     FOREIGN KEY (country_name) REFERENCES Country(country_name),
-
     UNIQUE(location_name)
     -- Any two locations must be at least one nautical mile apart
 );
@@ -104,6 +92,7 @@ CREATE TABLE Trip(
     boat_cni VARCHAR(80),
     start_date DATE,
     end_date DATE,
+
     location_to VARCHAR(80) NOT NULL,
     location_from VARCHAR(80) NOT NULL,
     skipper_email VARCHAR(80) NOT NULL,
@@ -112,7 +101,9 @@ CREATE TABLE Trip(
                  start_date,trip_take_off),
 
     FOREIGN KEY (boat_cni,start_date,end_date)
-        REFERENCES Reservation(boat_cni,start_date,end_date),
+        REFERENCES Reservation(boat_cni,start_date,
+                               end_date),
+
     FOREIGN KEY (location_to) REFERENCES Location(location_name),
     FOREIGN KEY (location_from) REFERENCES Location(location_name),
     FOREIGN KEY (skipper_email) REFERENCES Sailor(email)
@@ -127,12 +118,10 @@ CREATE TABLE Sailing_Certificate(
     email VARCHAR(80) NOT NULL,
     issue_date DATE NOT NULL,
     expiry_date DATE NOT NULL,
-
     PRIMARY KEY(email, issue_date),
-
+    --uncomment when sailor table is done
     FOREIGN KEY(email) REFERENCES Sailor(email),
     FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
-
     UNIQUE(issue_date)
     --every certificate must exist in the table valid_for
 );
@@ -148,7 +137,8 @@ CREATE TABLE valid_for(
     FOREIGN KEY(country_name) REFERENCES Country(country_name),
     FOREIGN KEY(issue_date) REFERENCES Sailing_Certificate(issue_date),
     FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
-    FOREIGN KEY(sailor_email) REFERENCES Sailor(email)
+    --uncomment after sailor is defined
+    FOREIGN KEY(sailor_email) REFERENCES sailor(email)
 );
 
 
@@ -157,9 +147,7 @@ CREATE TABLE Authorized(
     boat_cni VARCHAR(80),
     start_date DATE,
     end_date DATE,
-
     PRIMARY KEY (email, boat_cni, start_date,end_date),
-
     FOREIGN KEY (email) REFERENCES Sailor(email),
     FOREIGN KEY (boat_cni, start_date,end_date) REFERENCES Reservation(boat_cni, start_date,end_date)
 );
