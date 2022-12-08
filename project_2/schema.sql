@@ -65,11 +65,11 @@ CREATE TABLE Reservation(
     boat_cni VARCHAR(80),
     start_date DATE,
     end_date DATE,
-    responsible_for VARCHAR(80) NOT NULL ,
+    sailor_email VARCHAR(80) NOT NULL ,
     PRIMARY KEY (boat_cni,start_date,end_date),
     FOREIGN KEY (start_date,end_date) REFERENCES Date_interval(start_date,end_date),
     FOREIGN KEY (boat_cni) REFERENCES Boat(boat_cni),
-    FOREIGN KEY (responsible_for) REFERENCES Senior(email)
+    FOREIGN KEY (sailor_email) REFERENCES Senior(email)
     --Every	reservation	must have at least one 'Senior sailor'
     --Every reservation must have at least one 'authorization' from a sailor
 );
@@ -122,7 +122,7 @@ CREATE TABLE Sailing_Certificate(
     --uncomment when sailor table is done
     FOREIGN KEY(email) REFERENCES Sailor(email),
     FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
-    UNIQUE(issue_date)
+    UNIQUE (email, issue_date)
     --every certificate must exist in the table valid_for
 );
 
@@ -135,10 +135,9 @@ CREATE TABLE valid_for(
     PRIMARY KEY(country_name, issue_date, sailor_email,boat_class_name),
 
     FOREIGN KEY(country_name) REFERENCES Country(country_name),
-    FOREIGN KEY(issue_date) REFERENCES Sailing_Certificate(issue_date),
-    FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
+    FOREIGN KEY(sailor_email,issue_date) REFERENCES Sailing_Certificate(email,issue_date),
+    FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name)
     --uncomment after sailor is defined
-    FOREIGN KEY(sailor_email) REFERENCES sailor(email)
 );
 
 
