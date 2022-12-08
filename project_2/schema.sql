@@ -32,7 +32,7 @@ CREATE TABLE Senior(
 
 CREATE TABLE Boat_Class(
     boat_class_name VARCHAR(80),
-    max_length NUMERIC(5,4) NOT NULL,
+    max_length NUMERIC(5) NOT NULL,
 
     PRIMARY KEY(boat_class_name)
 );
@@ -40,7 +40,7 @@ CREATE TABLE Boat_Class(
 CREATE TABLE Country(
     country_name VARCHAR(80),
     country_flag VARCHAR(80) NOT NULL,
-    country_ISO INTEGER NOT NULL,
+    country_ISO VARCHAR(40) NOT NULL,
 
     PRIMARY KEY(country_name),
 
@@ -51,7 +51,7 @@ CREATE TABLE Country(
 CREATE TABLE Boat(
     boat_cni VARCHAR(80),
     length INTEGER NOT NULL,
-    registration_year DATE NOT NULL,
+    registration_year NUMERIC(4,0) NOT NULL,
     country_name VARCHAR(80) NOT NULL,
     boat_class_name VARCHAR(80) NOT NULL,
 
@@ -63,22 +63,22 @@ CREATE TABLE Boat(
     UNIQUE(boat_cni)
 );
 
-CREATE TABLE Date_interval(
-    date_inter_start DATE,
-    date_inter_end DATE,
+CREATE TABLE Date_Interval(
+    start_date DATE,
+    end_date DATE,
 
-    PRIMARY KEY (date_inter_start,date_inter_end)
+    PRIMARY KEY (start_date,end_date)
 );
 
 CREATE TABLE Reservation(
     boat_cni VARCHAR(80),
-    date_inter_start DATE,
-    date_inter_end DATE,
+    start_date DATE,
+    end_date DATE,
     senior_email VARCHAR(80) NOT NULL ,
 
-    PRIMARY KEY (boat_cni,date_inter_start,date_inter_end),
+    PRIMARY KEY (boat_cni,start_date,end_date),
 
-    FOREIGN KEY (date_inter_start,date_inter_end) REFERENCES Date_interval(date_inter_start,date_inter_end),
+    FOREIGN KEY (start_date,end_date) REFERENCES Date_interval(start_date,end_date),
     FOREIGN KEY (boat_cni) REFERENCES Boat(boat_cni),
     FOREIGN KEY (senior_email) REFERENCES Senior(email)
 );
@@ -102,17 +102,17 @@ CREATE TABLE Trip(
     trip_take_off DATE,
     trip_insurance VARCHAR(80) NOT NULL,
     boat_cni VARCHAR(80),
-    date_inter_start DATE,
-    date_inter_end DATE,
+    start_date DATE,
+    end_date DATE,
     location_to VARCHAR(80) NOT NULL,
     location_from VARCHAR(80) NOT NULL,
     skipper_email VARCHAR(80) NOT NULL,
 
-    PRIMARY KEY (boat_cni,date_inter_end,
-                 date_inter_start,trip_take_off),
+    PRIMARY KEY (boat_cni,end_date,
+                 start_date,trip_take_off),
 
-    FOREIGN KEY (boat_cni,date_inter_start,date_inter_end)
-        REFERENCES Reservation(boat_cni,date_inter_start,date_inter_end),
+    FOREIGN KEY (boat_cni,start_date,end_date)
+        REFERENCES Reservation(boat_cni,start_date,end_date),
     FOREIGN KEY (location_to) REFERENCES Location(location_name),
     FOREIGN KEY (location_from) REFERENCES Location(location_name),
     FOREIGN KEY (skipper_email) REFERENCES Sailor(email)
@@ -155,11 +155,11 @@ CREATE TABLE valid_for(
 CREATE TABLE Authorized(
     email VARCHAR(254),
     boat_cni VARCHAR(80),
-    date_inter_start DATE,
-    date_inter_end DATE,
+    start_date DATE,
+    end_date DATE,
 
-    PRIMARY KEY (email, boat_cni, date_inter_start,date_inter_end),
+    PRIMARY KEY (email, boat_cni, start_date,end_date),
 
     FOREIGN KEY (email) REFERENCES Sailor(email),
-    FOREIGN KEY (boat_cni, date_inter_start,date_inter_end) REFERENCES Reservation(boat_cni, date_inter_start,date_inter_end)
+    FOREIGN KEY (boat_cni, start_date,end_date) REFERENCES Reservation(boat_cni, start_date,end_date)
 );
