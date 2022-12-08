@@ -118,11 +118,11 @@ CREATE TABLE Sailing_Certificate(
     email VARCHAR(80) NOT NULL,
     issue_date DATE NOT NULL,
     expiry_date DATE NOT NULL,
-    PRIMARY KEY(email, issue_date),
+    PRIMARY KEY(email, issue_date,boat_class_name),
     --uncomment when sailor table is done
     FOREIGN KEY(email) REFERENCES Sailor(email),
     FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
-    UNIQUE (email, issue_date)
+    UNIQUE (email, issue_date,boat_class_name)
     --every certificate must exist in the table valid_for
 );
 
@@ -135,9 +135,7 @@ CREATE TABLE valid_for(
     PRIMARY KEY(country_name, issue_date, sailor_email,boat_class_name),
 
     FOREIGN KEY(country_name) REFERENCES Country(country_name),
-    FOREIGN KEY(sailor_email,issue_date) REFERENCES Sailing_Certificate(email,issue_date),
-    FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name)
-    --uncomment after sailor is defined
+    FOREIGN KEY(sailor_email,issue_date,boat_class_name) REFERENCES Sailing_Certificate(email,issue_date,boat_class_name)
 );
 
 
