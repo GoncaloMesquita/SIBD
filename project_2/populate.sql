@@ -103,13 +103,11 @@ INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('santos
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
     ('2022-12-01','2022-12-02', '123456','123456789','2022-12-01','2022-12-03','Porto','Lisboa','diogocao@email.com');
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
-    ('2022-12-12','2022-12-13', '120467','987654321','2022-12-01','2022-12-13','Lisboa','Madrid','joaosilva@email.com');
+    ('2022-12-01','2022-12-02', '120467','987654321','2022-12-01','2022-12-02','Lisboa','Madrid','joaosilva@email.com');
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
-    ('2022-12-12','2022-12-13', '121467','142359879','2022-12-01','2022-12-13','Porto','Albufeira','santos@email.com');
+    ('2022-12-01','2022-12-02', '121467','142359879','2022-12-01','2022-12-02','Porto','Albufeira','santos@email.com');
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
-    ('2022-12-12','2022-12-13', '123567','010101010','2022-12-01','2022-12-13','Porto','Roma','santos@email.com');
-INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
-    ('2022-12-11','2022-12-12', '123567','010101010','2022-12-01','2022-12-12','Porto','Roma','santos@email.com');
+    ('2022-12-01','2022-12-02', '123567','010101010','2022-12-01','2022-12-02','Porto','Roma','santos@email.com');
 
 
 -- Inserting Sailing Certification to each sailor
