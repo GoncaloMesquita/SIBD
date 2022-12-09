@@ -66,3 +66,11 @@ SELECT boat_name, r.start_date
     FROM boat b
     JOIN  reservation r on b.boat_cni = r.boat_cni
     ORDER BY r.start_date;
+
+-- The name of all boats that have been reserved for a trip that starts in 'Portugal'
+SELECT b.boat_name FROM boat b
+    JOIN reservation r ON b.boat_cni = r.boat_cni
+    JOIN trip t ON r.boat_cni = t.boat_cni and r.start_date = t.start_date and r.end_date = t.end_date
+    JOIN location l ON t.location_from = l.location_name
+    JOIN country c ON l.country_name = c.country_name
+    WHERE c.country_name = 'Portugal';
