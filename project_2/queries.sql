@@ -24,7 +24,6 @@ SELECT DISTINCT s.first_name, s.surname FROM Sailor s
     JOIN reservation r on t.boat_cni = r.boat_cni and t.start_date = r.start_date and t.end_date = r.end_date
     JOIN boat b on r.boat_cni = b.boat_cni
     WHERE b.boat_class_name <> sc.boat_class_name
-    --GROUP BY s.first_name, s.surname ;
 
 -- 5) Country and boat names from boats that have a trip on the first 3 days of December 2022
 SELECT c.country_name,b.boat_name FROM country c
