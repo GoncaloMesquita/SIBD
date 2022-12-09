@@ -47,7 +47,7 @@ CREATE TABLE Sailor(
     surname VARCHAR(15) NOT NULL,
     first_name VARCHAR(15) NOT NULL,
     PRIMARY KEY(email)
-    --No sailor can exist at the same time in both tables 'Junior' and 'Senior'.
+    --A sailor must be a member of either one of the tables 'Junior' or 'Senior'
 
 );
 
