@@ -74,3 +74,11 @@ SELECT b.boat_name FROM boat b
     JOIN location l ON t.location_from = l.location_name
     JOIN country c ON l.country_name = c.country_name
     WHERE c.country_name = 'Portugal';
+
+-- The name of all boats that have been reserved for a trip that starts in 'Spain' and ends in 'Portugal'
+SELECT b.boat_name FROM boat b
+    JOIN reservation r ON b.boat_cni = r.boat_cni
+    JOIN trip t ON r.boat_cni = t.boat_cni and r.start_date = t.start_date and r.end_date = t.end_date
+    JOIN location l ON t.location_from = l.location_name
+    JOIN location l2 ON t.location_to = l2.location_name
+    WHERE l.country_name = 'Spain' AND l2.country_name = 'Portugal';

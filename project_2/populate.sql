@@ -1,11 +1,11 @@
 -- Insert into Country
 INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Portugal','pt_flag','PRT');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Espanha','esp_flag','ESP');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('França','fr_flag','FRA');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Italia','it_flag','ITA');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Alemanha','de_flag','DEU');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Inglaterra','uk_flag','GBR');
-INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Holanda','nl_flag','NLD');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Spain','esp_flag','ESP');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('France','fr_flag','FRA');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Italy','it_flag','ITA');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Germany','de_flag','DEU');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('England','uk_flag','GBR');
+INSERT INTO Country (country_name,country_flag,country_iso) VALUES ('Netherlands','nl_flag','NLD');
 
 
 -- Inserting values into Location
@@ -14,12 +14,12 @@ INSERT INTO Location (location_name, location_longitude, location_latitude, coun
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Albufeira', 'N37.089072', 'W-8.247880', 'Portugal');
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Lagos', 'N37.101268', 'W-8.674545', 'Portugal');
 INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Lisboa', 'N38.742751', 'W-9.132196','Portugal');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Madrid', 'N40.416775', 'W-3.703790','Espanha');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Londres', 'N51.507351', 'W-0.127758','Inglaterra');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Paris', 'N48.856614', 'W-2.352222','França');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Roma', 'N41.902782', 'W-12.496366','Italia');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Amesterdao', 'N52.370216', 'W-4.895168','Holanda');
-INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Berlim', 'N52.520007', 'W-13.404954','Alemanha');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Madrid', 'N40.416775', 'W-3.703790','Spain');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Londres', 'N51.507351', 'W-0.127758','England');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Paris', 'N48.856614', 'W-2.352222','France');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Roma', 'N41.902782', 'W-12.496366','Italy');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Amesterdao', 'N52.370216', 'W-4.895168','Netherlands');
+INSERT INTO Location (location_name, location_longitude, location_latitude, country_name) VALUES ('Berlim', 'N52.520007', 'W-13.404954','Germany');
 
 
 -- Inserting values into Boat_Class
@@ -32,12 +32,12 @@ INSERT INTO boat_class (boat_class_name, max_length) VALUES ('Class 5', 55);
 
 -- Inserting values into Boat
 INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length ,boat_name) VALUES ('123456789', 1990, 'Class 1', 'Portugal', 10, 'barco 1');
-INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('987654321', 1663, 'Class 1', 'Espanha', 10, 'Titanic');
+INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('987654321', 1663, 'Class 1', 'Spain', 10, 'Titanic');
 INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('123490312', 1663, 'Class 1', 'Portugal', 10, 'barco 2');
 INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('142359879', 2000, 'Class 2', 'Portugal', 20, 'Los Santos');
-INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('010101010', 2010, 'Class 2', 'Alemanha', 20, 'barco 3');
-INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('101010101', 2014, 'Class 2', 'Holanda', 22, 'barco 4');
-INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('112233445', 2015, 'Class 4', 'Espanha', 43, 'barco 5');
+INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('010101010', 2010, 'Class 2', 'Germany', 20, 'barco 3');
+INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('101010101', 2014, 'Class 2', 'Netherlands', 22, 'barco 4');
+INSERT INTO Boat (boat_cni, boat_registration_year, boat_class_name, country_name, boat_length, boat_name) VALUES ('112233445', 2015, 'Class 4', 'Spain', 43, 'barco 5');
 
 
 
@@ -123,4 +123,4 @@ INSERT INTO Sailing_Certificate(boat_class_name, email, issue_date, expiry_date)
 -- Inserting values into valid_for
 INSERT INTO valid_for (country_name, issue_date, boat_class_name, sailor_email) VALUES ('Portugal', '2015-11-08', 'Class 1', 'pedrocabral@email.com');
 INSERT INTO valid_for (country_name, issue_date, boat_class_name, sailor_email) VALUES ('Portugal', '2016-11-09', 'Class 2', 'santos@email.com');
-INSERT INTO valid_for (country_name, issue_date, boat_class_name, sailor_email) VALUES ('Italia', '2016-11-09', 'Class 2', 'santos@email.com');
+INSERT INTO valid_for (country_name, issue_date, boat_class_name, sailor_email) VALUES ('Italy', '2016-11-09', 'Class 2', 'santos@email.com');
