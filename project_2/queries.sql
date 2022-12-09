@@ -1,5 +1,5 @@
 -- 1) The name of all boats that are used in some trip
-SELECT boat_name from boat
+SELECT DISTINCT boat_name from boat
     natural join reservation
     natural join trip;
 
@@ -24,7 +24,7 @@ SELECT DISTINCT s.first_name, s.surname FROM Sailor s
     JOIN reservation r on t.boat_cni = r.boat_cni and t.start_date = r.start_date and t.end_date = r.end_date
     JOIN boat b on r.boat_cni = b.boat_cni
     WHERE b.boat_class_name <> sc.boat_class_name
-    
+
 -- 5) Country and boat names from boats that have a trip on the first 3 days of December 2022
 SELECT c.country_name,b.boat_name FROM country c
     JOIN boat b on c.country_name = b.country_name
@@ -39,7 +39,7 @@ SELECT c.country_name, count(b.boat_name) as boat_count FROM country c
     ORDER BY boat_count DESC;
 
 -- 7) The boat name from boats that sail internationally
-SELECT b.boat_name FROM country c
+SELECT DISTINCT b.boat_name FROM country c
     JOIN boat b on c.country_name = b.country_name
     JOIN reservation r on b.boat_cni = r.boat_cni
     JOIN trip t on r.boat_cni = t.boat_cni and r.start_date = t.start_date and r.end_date = t.end_date

@@ -23,7 +23,7 @@ CREATE TABLE Country(
 CREATE TABLE Boat(
     boat_name VARCHAR(80) NOT NULL,
     boat_cni VARCHAR(80),
-    boat_length INTEGER NOT NULL,
+    boat_length NUMERIC(5,1) NOT NULL,
     boat_registration_year NUMERIC(4) NOT NULL,
     country_name VARCHAR(80) NOT NULL,
     boat_class_name VARCHAR(80) NOT NULL,
