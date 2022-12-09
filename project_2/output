@@ -1,0 +1,86 @@
+ 1) The name of all boats that are used in some trip:
+barco 3
+barco 1
+Titanic
+Los Santos
+
+2) The name of all boats that are not used in any trip:
+barco 2
+barco 4
+barco 5
+
+3) The name of all boats registered in 'PRT' (ISO code) for which at least one responsible for a reservation has a surname that ends with 'Santos'Quirie 3)
+barco 1
+Los Santos	
+
+4) The full name of all skippers without any certificate corresponding to the class of the trip’s boat.
+Jose,Santos
+Jose,Santos
+Jose,Santos
+Jose,Santos
+Jose,Santos
+Jose,Santos
+
+5) Country and boat names from boats that have a trip on the first 3 days of December 2022
+Portugal,barco 1
+
+6) Number of boats by country and order by number of boats
+Portugal,3
+Spain,2
+Germany,1
+Netherlands,1
+
+7) The boat name from boats that sail internationally
+barco 3
+Titanic
+
+8) All boats that have been reserved at least once
+barco 4
+barco 3
+Titanic
+barco 1
+Los Santos
+
+9) All sailors that have reserved boats registered in the country 'Portugal'
+Jose,Santos
+Mateus,Santos
+Pedro,Cabral
+Vasco,Gama
+
+10) Name of the boats that are reserved in order of date
+barco 4,2022-12-01
+barco 1,2022-12-01
+barco 3,2022-12-01
+barco 1,2022-12-01
+Titanic,2022-12-01
+Los Santos,2022-12-01
+barco 1,2022-12-03
+barco 4,2022-12-03
+
+11) The name of all boats that have been reserved for a trip that starts in 'Portugal'
+barco 1
+Los Santos
+
+ 12) The name of all boats that have been reserved for a trip that starts in 'Spain' and ends in 'Portugal'
+Titanic
+
+13) Name of the sailors order by their expiried Sailing Certification
+Vasco,Gama
+Pedro,Cabral
+Jose,Santos
+Jose,Santos
+Jose,Santos
+Jose,Santos
+Diogo,Cão
+João,Silva
+
+14) Name of the sailors and how many different class certification they have
+Vasco,Gama,1
+Diogo,Cão,1
+João,Silva,1
+Jose,Santos,4
+Pedro,Cabral,1
+
+
+
+
