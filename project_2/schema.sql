@@ -38,6 +38,8 @@ CREATE TABLE Date_interval(
     start_date DATE,
     end_date DATE,
     PRIMARY KEY (start_date,end_date)
+
+    -- start_date should be before end_date
 );
 
 CREATE TABLE Sailor(
@@ -46,7 +48,7 @@ CREATE TABLE Sailor(
     first_name VARCHAR(15) NOT NULL,
     PRIMARY KEY(email)
     --No sailor can exist at the same time in both tables 'Junior' and 'Senior'.
-    --
+
 );
 
 CREATE TABLE Junior(
@@ -72,6 +74,7 @@ CREATE TABLE Reservation(
     FOREIGN KEY (sailor_email) REFERENCES Senior(email)
     --Every	reservation	must have at least one 'Senior sailor'
     --Every reservation must have at least one 'authorization' from a sailor
+    --start_date should be before end_date
 );
 
 CREATE TABLE Location(
@@ -111,6 +114,8 @@ CREATE TABLE Trip(
     -- A boat can not take off on a trip before the reservation start date.
     -- The skipper must be an authorized sailor of the corresponding reservation.
     -- A boat can not take off on a trip before the reservation start date.
+    -- start_date should be before end_date
+    -- trip_take_off should be before trip_arrival
 );
 
 CREATE TABLE Sailing_Certificate(
@@ -119,11 +124,11 @@ CREATE TABLE Sailing_Certificate(
     issue_date DATE NOT NULL,
     expiry_date DATE NOT NULL,
     PRIMARY KEY(email, issue_date,boat_class_name),
-    --uncomment when sailor table is done
     FOREIGN KEY(email) REFERENCES Sailor(email),
     FOREIGN KEY(boat_class_name) REFERENCES Boat_Class(boat_class_name),
     UNIQUE (email, issue_date,boat_class_name)
     --every certificate must exist in the table valid_for
+    --issue_date should be before expiry_date
 );
 
 CREATE TABLE valid_for(
@@ -147,4 +152,5 @@ CREATE TABLE Authorized(
     PRIMARY KEY (email, boat_cni, start_date,end_date),
     FOREIGN KEY (email) REFERENCES Sailor(email),
     FOREIGN KEY (boat_cni, start_date,end_date) REFERENCES Reservation(boat_cni, start_date,end_date)
+    --start_date should be before end_date
 );
