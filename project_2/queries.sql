@@ -18,14 +18,13 @@ SELECT b.boat_name FROM boat b
     WHERE c.country_iso = 'PRT' AND s.surname LIKE '%Santos';
 
     -- 4) The full name of all skippers without any certificate corresponding to the class of the trip’s boat.
-SELECT s.first_name, s.surname FROM Sailor s
+SELECT DISTINCT s.first_name, s.surname FROM Sailor s
     JOIN trip t on s.email = t.skipper_email
     JOIN sailing_certificate sc on s.email = sc.email
     JOIN reservation r on t.boat_cni = r.boat_cni and t.start_date = r.start_date and t.end_date = r.end_date
     JOIN boat b on r.boat_cni = b.boat_cni
     WHERE b.boat_class_name <> sc.boat_class_name
-    GROUP BY s.first_name, s.surname ;
-
+    
 -- 5) Country and boat names from boats that have a trip on the first 3 days of December 2022
 SELECT c.country_name,b.boat_name FROM country c
     JOIN boat b on c.country_name = b.country_name
