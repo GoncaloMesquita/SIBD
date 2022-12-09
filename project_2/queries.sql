@@ -48,5 +48,21 @@ SELECT b.boat_name FROM country c
     JOIN location l2 on t.location_to = l2.location_name
     WHERE l.country_name <> l2.country_name;
 
- 
+--  All boats that have been reserved at least once
+SELECT DISTINCT boat_name
+    FROM boat b
+    JOIN  reservation r on b.boat_cni = r.boat_cni;
 
+--  All sailors that have reserved boats registered in the country 'Portugal'
+SELECT DISTINCT s.first_name, s.surname
+    FROM sailor s
+    JOIN reservation r ON s.email = r.sailor_email
+    JOIN boat b ON r.boat_cni = b.boat_cni
+    JOIN Country c ON c.country_name = b.country_name
+    WHERE c.country_name = 'Portugal';
+
+-- Name of the boats that are reserved in order of date
+SELECT boat_name, r.start_date
+    FROM boat b
+    JOIN  reservation r on b.boat_cni = r.boat_cni
+    ORDER BY r.start_date;
