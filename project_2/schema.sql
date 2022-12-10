@@ -113,7 +113,6 @@ CREATE TABLE Trip(
 
     -- A boat can not take off on a trip before the reservation start date.
     -- The skipper must be an authorized sailor of the corresponding reservation.
-    -- A boat can not take off on a trip before the reservation start date.
     -- start_date should be before end_date
     -- trip_take_off should be before trip_arrival
 );

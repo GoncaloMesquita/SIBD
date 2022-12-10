@@ -20,10 +20,14 @@ SELECT b.boat_name FROM boat b
     -- 4) The full name of all skippers without any certificate corresponding to the class of the trip’s boat.
 SELECT DISTINCT s.first_name, s.surname FROM Sailor s
     JOIN trip t on s.email = t.skipper_email
-    JOIN sailing_certificate sc on s.email = sc.email
-    JOIN reservation r on t.boat_cni = r.boat_cni and t.start_date = r.start_date and t.end_date = r.end_date
-    JOIN boat b on r.boat_cni = b.boat_cni
-    WHERE b.boat_class_name <> sc.boat_class_name
+    WHERE s.email NOT IN(
+        SELECT DISTINCT s.email FROM Sailor s
+        JOIN trip t on s.email = t.skipper_email
+        JOIN sailing_certificate sc on s.email = sc.email
+        JOIN reservation r on t.boat_cni = r.boat_cni and t.start_date = r.start_date and t.end_date = r.end_date
+        JOIN boat b on r.boat_cni = b.boat_cni
+        where b.boat_class_name = sc.boat_class_name
+    );
 
 -- 5) Country and boat names from boats that have a trip on the first 3 days of December 2022
 SELECT c.country_name,b.boat_name FROM country c
@@ -82,7 +86,7 @@ SELECT b.boat_name FROM boat b
     JOIN location l2 ON t.location_to = l2.location_name
     WHERE l.country_name = 'Spain' AND l2.country_name = 'Portugal';
 
--- 13) Name of the sailors order by their expiried Sailing Certification
+-- 13) Name of the sailors order by their expired Sailing Certification
 SELECT s.first_name, s.surname
     FROM sailor s
     JOIN Sailing_Certificate SC on s.email = SC.email

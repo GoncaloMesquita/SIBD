@@ -75,6 +75,7 @@ INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-04', '2022-12-
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-05', '2022-12-06');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-06', '2022-12-07');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-07', '2022-12-08');
+INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-12', '2022-12-13');
 
 
 -- Inserting values into Reservation
@@ -85,11 +86,11 @@ INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('
 INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('142359879', '2022-12-01', '2022-12-02', 'santos2@email.com');
 INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('123456789', '2022-12-01', '2022-12-02', 'santos@email.com');
 INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('101010101', '2022-12-03', '2022-12-04', 'pierrefrance@email.com');
-INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('101010101', '2022-12-01', '2022-12-03', 'pedrocabral@email.com');
+INSERT INTO Reservation (boat_cni, start_date, end_date, sailor_email) VALUES ('101010101', '2022-12-12', '2022-12-13', 'pedrocabral@email.com');
 
 
 -- Inserting values into authorized
-INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('pedrocabral@email.com','123456789','2022-12-01','2022-12-02');
+INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('pedrocabral@email.com','010101010','2022-12-01','2022-12-02');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('joaosilva@email.com','987654321','2022-12-01','2022-12-02');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('diogocao@email.com','123456789','2022-12-03','2022-12-04');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('diogocao@email.com','123456789','2022-12-01','2022-12-03');
@@ -98,6 +99,7 @@ INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('johnsm
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('joaomatos@email.com','123456789','2022-12-01','2022-12-03');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('santos@email.com','142359879','2022-12-01','2022-12-02');
 INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('santos@email.com','010101010','2022-12-01','2022-12-02');
+INSERT INTO Authorized (email, boat_cni, start_date, end_date)  VALUES  ('pedrocabral@email.com','101010101','2022-12-12','2022-12-13');
 
 -- Inserting values into Trip
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
@@ -108,7 +110,8 @@ INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_dat
     ('2022-12-01','2022-12-02', '121467','142359879','2022-12-01','2022-12-02','Porto','Albufeira','santos@email.com');
 INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
     ('2022-12-01','2022-12-02', '123567','010101010','2022-12-01','2022-12-02','Porto','Roma','santos@email.com');
-
+INSERT INTO Trip (trip_take_off, trip_arrival ,trip_insurance,boat_cni,start_date,end_date,location_to,location_from,skipper_email) VALUES
+    ('2022-12-12','2022-12-14', '123567','101010101','2022-12-12','2022-12-13','Porto','Roma','pedrocabral@email.com');
 
 -- Inserting Sailing Certification to each sailor
 INSERT INTO Sailing_Certificate(boat_class_name, email, issue_date, expiry_date)  VALUES ('Class 1', 'pedrocabral@email.com', '2015-11-08','2025-11-08' );
