@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-import psycopg2
-import cgi
+import psycopg2, cgi
 import login
-form = cgi.FieldStorage()
-#getvalue uses the names from the form in previous page
-mode = form.getvalue('mode')
+
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -14,8 +11,20 @@ print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservatio
 print('<div>')
 print('</head>')
 print('<body>')
-print('<h2>List</h2>')
-print('<h3>{}</h3>'.format(mode))
+print('<h2>Reservation</h2>')
+print('<h3>Remove Reservation</h3>')
+
+# Form
+print('<form action="remove_reservation.cgi" method="post">')
+
+print('<p>Start date: <input type="date" id="start_date" name="start_date" required><br></p>')
+print('<p>End date: <input type="date" id="end_date" name="end_date" requires></p>')
+print('<p>Country: <input type="text" name="country" required></p>')
+print('<p>Boat Code: <input type="text" name="cni" required></p>')
+
+print('<p><input type="submit" value="Confirm"/></p>')
+print('</form>')
+
 connection = None
 try:
     # Creating connection
@@ -23,7 +32,7 @@ try:
     cursor = connection.cursor()
     
     # Making query
-    sql = 'SELECT * FROM {};'.format(mode)
+    sql = 'SELECT * FROM reservation;'
     cursor.execute(sql)
     result = cursor.fetchall()
     num = len(result)
@@ -43,8 +52,11 @@ try:
             print('<td>{}</td>'.format(value))
         print('</tr>')
     print('</table>')
-    # Closing connection
+    
+    #End Connection
     cursor.close()
+    connection.close()
+
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')
@@ -52,6 +64,6 @@ except Exception as e:
 finally:
     if connection is not None:
         connection.close()
-        
+
 print('</body>')
 print('</html>')

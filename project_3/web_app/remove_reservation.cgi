@@ -15,11 +15,11 @@ print('<html>')
 print('<head>')
 print('<title>SIBD Project</title>')
 print('<div><h3>Menu</h3>')
-print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a>')
+print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a> | <a href="trips.cgi">Trips</a>')
 print('<div>')
 print('</head>')
 print('<body>')
-print('<h2>Sailors</h2>')
+print('<h2>Reservation</h2>')
 connection = None
 try:
     # Creating connection

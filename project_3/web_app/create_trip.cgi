@@ -23,7 +23,7 @@ try:
     connection = psycopg2.connect(login.credentials)
     cursor = connection.cursor()
     
-    verify_sailor = "SELECT * FROM sailor WHERE email = %(email)s"
+    verify_sailor = "SELECT * FROM trip WHERE email = %(email)s"
 
     cursor.execute(verify_sailor, {'firstname': firstname, 'surname': surname, 'email': email})
     result = cursor.fetchall()

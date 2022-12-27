@@ -10,7 +10,7 @@ print('<html>')
 print('<head>')
 print('<title>SIBD Project</title>')
 print('<div><h3>Menu</h3>')
-print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a>')
+print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a> | <a href="trips.cgi">Trips</a>')
 print('<div>')
 print('</head>')
 print('<body>')
@@ -29,6 +29,11 @@ try:
     if len(result) == 0:
         print('Sailor does not exist')
     else:
+
+        cursor.execute("START TRANSACTION")
+        cursor.execute("SET CONSTRAINTS ALL DEFERRED")
+        delete_senior = "DELETE FROM senior WHERE email = %(email)s"
+        delete_junior = "DELETE FROM junior WHERE email = %(email)s"
         delete_sailor = "DELETE FROM sailor WHERE email = %(email)s"
         cursor.execute(delete_sailor, {'email': email})
         connection.commit()
