@@ -11,8 +11,8 @@
         <form action="create_reservation.cgi" method="post">
         
         
-        <p>Start date: <input type="datetime-local" id="calendar-start" name ="calendar_start" required></p>
-        <p>End date: <input type="datetime-local" id="calendar-end" name="calendar_end" requires></p>
+        <p>Start date: <input type="date" id="start_date" name="start_date" required><br></p>
+        <p>End date: <input type="date" id="end_date" name="end_date" requires></p>
         <p>Country: <input type="text" name="country" required></p>
         <p>Boat Code: <input type="text" name="cni" required></p>
         <p>Responsible sailor: <input type="text" name="email" required></p>
@@ -22,17 +22,3 @@
         </form>
     </body>
 </html>
-
-
-<script>
-    $('#calendar-start').calendar({
-      formatter: {
-        datetime: 'DD"-"MM"-"YYYY" "HH":"mm'
-      }}
-    );
-    $('#calendar-end').calendar({
-      formatter: {
-        datetime: 'DD"-"MM"-"YYYY" "HH":"mm'
-      }}
-    );
-</script>
