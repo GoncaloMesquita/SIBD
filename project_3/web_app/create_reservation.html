@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>SIBD Project</title>
+        <div><h3>Menu</h3>
+        <a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a>
+        <div>
+        </head>
+    <body>
+        <h2>Reservation</h2>
+        <h3>Create New Reservation</h3>
+        <form action="create_reservation.cgi" method="post">
+        
+        
+        <p>Start date: <input type="datetime-local" id="calendar-start" name ="calendar_start" required></p>
+        <p>End date: <input type="datetime-local" id="calendar-end" name="calendar_end" requires></p>
+        <p>Country: <input type="text" name="country" required></p>
+        <p>Boat Code: <input type="text" name="cni" required></p>
+        <p>Responsible sailor: <input type="text" name="email" required></p>
+
+        <p><input type="submit" value="Register"/></p>
+
+        </form>
+    </body>
+</html>
+
+
+<script>
+    $('#calendar-start').calendar({
+      formatter: {
+        datetime: 'DD"-"MM"-"YYYY" "HH":"mm'
+      }}
+    );
+    $('#calendar-end').calendar({
+      formatter: {
+        datetime: 'DD"-"MM"-"YYYY" "HH":"mm'
+      }}
+    );
+</script>
