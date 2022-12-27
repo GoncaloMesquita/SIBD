@@ -19,7 +19,7 @@ try:
     # Listing options
     print('<a href="list.cgi?mode=reservation">List</a>')
     print('<a href="create_reservation.html">Create</a>')
-    print('<a href="not">NOT YET</a>')
+    print('<a href="remove_reservation.html">Remove</a>')
 
 except Exception as e:
     # Print errors on the webpage if they occur
