@@ -11,16 +11,19 @@ print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservatio
 print('<div>')
 print('</head>')
 print('<body>')
-print('<h2>Reservation</h2>')
-print('<h3>Remove Reservation</h3>')
+print('<h2>Trips</h2>')
+print('<h3>Remove Trip</h3>')
 
 # Form
-print('<form action="remove_reservation.cgi" method="post">')
+print('<form action="remove_trip.cgi" method="post">')
 
-print('<p>Start date: <input type="date" id="start_date" name="start_date" required><br></p>')
-print('<p>End date: <input type="date" id="end_date" name="end_date" requires></p>')
-print('<p>Country: <input type="text" name="country" required></p>')
-print('<p>Boat Code: <input type="text" name="cni" required></p>')
+print('<p>Takeoff: <input type="date" name="takeoff" required></p>')
+
+print('<p>Reservation start date: <input type="date" id="start_date" name="r_start_date" required>')
+print('\tReservation end date: <input type="date" id="end_date" name="r_end_date" requires></p>')
+
+print('<p>Boat Country: <input type="text" name="boat_country" required>')
+print('\tBoat Code: <input type="text" name="cni" required></p>')
 
 print('<p><input type="submit" value="Confirm"/></p>')
 print('</form>')
@@ -32,7 +35,7 @@ try:
     cursor = connection.cursor()
     
     # Making query
-    sql = 'SELECT * FROM reservation;'
+    sql = 'SELECT * FROM trip;'
     cursor.execute(sql)
     result = cursor.fetchall()
     num = len(result)
@@ -67,4 +70,3 @@ finally:
 
 print('</body>')
 print('</html>')
-

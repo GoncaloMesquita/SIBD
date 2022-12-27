@@ -37,7 +37,7 @@ try:
         delete_reserve = "DELETE FROM reservation WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND country = %(country)s AND cni = %(cni)s"
         cursor.execute(delete_reserve, {'start_date': start_date, 'end_date': end_date, 'country': country, 'cni': cni})
         connection.commit()
-        print('Reservation deleted')
+        print('Reservation deleted: SUCCESS')
 
     #End Connection
     cursor.close()
