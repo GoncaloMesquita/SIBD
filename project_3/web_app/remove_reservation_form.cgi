@@ -18,7 +18,7 @@ print('<h3>Remove Reservation</h3>')
 print('<form action="remove_reservation.cgi" method="post">')
 
 print('<p>Start date: <input type="date" id="start_date" name="start_date" required><br></p>')
-print('<p>End date: <input type="date" id="end_date" name="end_date" requires></p>')
+print('<p>End date: <input type="date" id="end_date" name="end_date" required></p>')
 print('<p>Country: <input type="text" name="country" required></p>')
 print('<p>Boat Code: <input type="text" name="cni" required></p>')
 

@@ -15,7 +15,7 @@ print('<div>')
 print('</head>')
 print('<body>')
 print('<h2>List</h2>')
-print('<h3>{}</h3>'.format(mode))
+print('<h3>Reservations</h3>')
 connection = None
 try:
     # Creating connection
@@ -23,7 +23,7 @@ try:
     cursor = connection.cursor()
     
     # Making query
-    sql = 'SELECT * FROM {};'.format(mode)
+    sql = 'SELECT * FROM reservation;'
     cursor.execute(sql)
     result = cursor.fetchall()
     num = len(result)
@@ -41,6 +41,7 @@ try:
         for value in row:
             # The string has the {}, the variables inside format() will replace the {}
             print('<td>{}</td>'.format(value))
+        print('<td><a href = "manage_authorization.cgi?start={}&end={}&country={}&cni={}">Manage Authorizations</a></td>'.format(row[0],row[1],row[2],row[3]))
         print('</tr>')
     print('</table>')
     # Closing connection

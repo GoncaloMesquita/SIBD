@@ -20,6 +20,7 @@ try:
     print('<a href="list.cgi?mode=reservation">List</a>')
     print('<a href="create_reservation.html">Create</a>')
     print('<a href="remove_reservation_form.cgi">Remove</a>')
+    print('<a href="list_authorizations.cgi">Authorizations</a>')
 
 except Exception as e:
     # Print errors on the webpage if they occur
