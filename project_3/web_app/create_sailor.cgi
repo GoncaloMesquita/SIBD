@@ -6,6 +6,7 @@ form = cgi.FieldStorage()
 firstname = form.getvalue('firstname')
 surname = form.getvalue('surname')
 email = form.getvalue('email')
+rank = form.getvalue('rank')
 
 print('Content-type:text/html\n\n')
 print('<html>')
@@ -29,8 +30,15 @@ try:
     result = cursor.fetchall()
 
     if len(result) == 0:
+        cursor.execute("START TRANSACTION;")
+        cursor.execute("SET CONSTRAINTS ALL DEFERRED;")
         insert_sailor = "INSERT INTO sailor VALUES(%(firstname)s, %(surname)s, %(email)s)"
         cursor.execute(insert_sailor, {'firstname': firstname,'surname' : surname, 'email': email})
+
+        insert_sailor = "INSERT INTO {} VALUES(%(email)s)".format(rank)
+        cursor.execute(insert_sailor, {'email': email})
+
+        cursor.execute("COMMIT;")
         connection.commit()
         print('Create New Sailor: SUCCESS')
     else:

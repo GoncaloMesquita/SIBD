@@ -24,7 +24,7 @@ CREATE OR REPLACE FUNCTION check_sailor() RETURNS TRIGGER AS
         END
     $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS check_sailor_tg ON location;
+DROP TRIGGER IF EXISTS check_sailor_tg ON sailor;
 
 CREATE CONSTRAINT TRIGGER check_sailor_tg
 AFTER INSERT ON sailor DEFERRABLE
@@ -32,28 +32,31 @@ FOR EACH ROW EXECUTE PROCEDURE check_sailor();
 
 --IC2: ) The take-off and arrival dates of Trips for the same reservation must not overlap (i.e., one Trip 
 -- cannot take off before the arrival of another)
-CREATE OR REPLACE FUNCTION check_trip() RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION check_dates() RETURNS TRIGGER AS
     $$
-        DECLARE
-            reservation_start DATE;
-            reservation_end DATE;
-            trip_start DATE;
-            trip_end DATE;
-            trip_start2 DATE;
-            trip_end2 DATE;
+        DECLARE existing_trips RECORD;
         BEGIN
-            SELECT start_date, end_date INTO reservation_start, reservation_end FROM reservation WHERE start_date = NEW.reservation_start_date 
-                    AND end_date = NEW.reservation_end_date AND country = NEW.boat_country AND cni = NEW.cni;
+            FOR existing_trips IN SELECT takeoff,arrival FROM trip WHERE reservation_start_date = NEW.reservation_start_date
+                                                            AND reservation_end_date = NEW.reservation_end_date
+                                                            AND cni = NEW.cni
+                                                            AND boat_country = NEW.boat_country
+            LOOP
+                IF NEW.takeoff > existing_trips.takeoff AND NEW.takeoff < existing_trips.arrival THEN
+                    RAISE EXCEPTION 'Start date value invalid.';
+                    EXIT;
+                END IF;
 
-            SELECT takeoff, arrival INTO trip_start, trip_end FROM trip WHERE reservation_start_date = reservation_start 
-                                                                        AND reservation_start_date = reservation_end;
-
-            SELECT takeoff, arrival INTO trip_start2, trip_end2 FROM trip WHERE reservation_start_date = reservation_start 
-                                                                        AND reservation_start_date = reservation_end;
-                                                                        
-            IF trip_start < trip_end2 AND trip_end > trip_start2 THEN
-                RAISE EXCEPTION 'Trips overlap';
-            END IF;
+                IF NEW.arrival > existing_trips.takeoff AND NEW.arrival < existing_trips.arrival THEN
+                    RAISE EXCEPTION 'End date value invalid';
+                    EXIT;
+                END IF;
+            END LOOP;
             RETURN NEW;
-        END
+        END;
     $$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS check_dates_tg ON trip;
+
+CREATE TRIGGER check_dates_tg
+BEFORE INSERT ON trip
+FOR EACH ROW EXECUTE PROCEDURE check_dates();
