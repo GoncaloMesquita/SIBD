@@ -21,30 +21,45 @@ INSERT INTO Location (name,  latitude, longitude, country_name) VALUES ('Roma', 
 INSERT INTO Location (name,  latitude, longitude, country_name) VALUES ('Amesterdao', 52.370216, -4.895168,'Netherlands');
 INSERT INTO Location (name,  latitude, longitude, country_name) VALUES ('Berlim', 52.520007, -13.404954,'Germany');
 
--- Inserting values into Sailor
+-- Inserting values into Sailor and Junior
+START TRANSACTION;
+SET CONSTRAINTS ALL DEFERRED;
 INSERT INTO Sailor (email, firstname, surname) VALUES ('joaosilva@email.com', 'João', 'Silva');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('pedrocabral@email.com', 'Pedro', 'Cabral');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('vascogama@email.com', 'Vasco', 'Gama');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('diogocao@email.com', 'Cão', 'Diogo');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('santos@email.com','Jose', 'Santos');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('santos2@email.com','Mateus', 'Santos');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('joaomatos@email.com','Joao', 'Matos');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('johnsmith@email.com','John', 'Smith');
-INSERT INTO Sailor (email, firstname, surname) VALUES ('pierrefrance@email.com','Pierre', 'France');
-
--- Inserting the sailor into Junior
 INSERT INTO Junior (email) VALUES ('joaosilva@email.com');
+
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('johnsmith@email.com','John', 'Smith');
 INSERT INTO Junior (email) VALUES ('johnsmith@email.com');
+
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('joaomatos@email.com','Joao', 'Matos');
 INSERT INTO Junior (email) VALUES ('joaomatos@email.com');
 
--- Inserting the sailor into Senior
+COMMIT;
+
+-- Inserting values into Sailor and Senior
+START TRANSACTION;
+SET CONSTRAINTS ALL DEFERRED;
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('pedrocabral@email.com', 'Pedro', 'Cabral');
 INSERT INTO Senior (email) VALUES ('pedrocabral@email.com');
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('vascogama@email.com', 'Vasco', 'Gama');
 INSERT INTO Senior (email) VALUES ('vascogama@email.com');
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('diogocao@email.com', 'Cão', 'Diogo');
 INSERT INTO Senior (email) VALUES ('diogocao@email.com');
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('santos@email.com','Jose', 'Santos');
 INSERT INTO Senior (email) VALUES ('santos@email.com');
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('santos2@email.com','Mateus', 'Santos');
 INSERT INTO Senior (email) VALUES ('santos2@email.com');
+
+INSERT INTO Sailor (email, firstname, surname) VALUES ('pierrefrance@email.com','Pierre', 'France');
 INSERT INTO Senior (email) VALUES ('pierrefrance@email.com');
 
+COMMIT;
 
 -- Inserting values into Boat_Class
 INSERT INTO boat_class (name, max_length) VALUES ('Class 1', 15);
