@@ -35,11 +35,8 @@ GROUP BY s.email
 ORDER BY num_trips DESC;
 
 --5)
---Errada corrigir
 
-SELECT skipper, reservation_start_date, reservation_end_date, boat_country, cni, SUM(arrival - takeoff ) AS total_duration
-FROM trip
-GROUP BY skipper, takeoff, reservation_start_date, reservation_end_date, boat_country, cni
-HAVING (SUM(arrival - takeoff )) >= ALL( SELECT SUM(arrival - takeoff )
-                                        FROM trip
-                                        GROUP BY skipper, takeoff, reservation_start_date, reservation_end_date, boat_country, cni);
+SELECT t.skipper, MAX(arrival - takeoff) AS total_duration
+FROM trip t
+GROUP BY t.skipper
+ORDER BY total_duration DESC;
