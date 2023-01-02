@@ -6,7 +6,7 @@ print('<html>')
 print('<head>')
 print('<title>SIBD Project</title>')
 print('<div><h3>Menu</h3>')
-print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a>')
+print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a> | <a href="trips.cgi">Trips</a>')
 print('<div>')
 print('</head>')
 print('<body>')
@@ -19,7 +19,8 @@ try:
     # Listing options
     print('<a href="list.cgi?mode=reservation">List</a>')
     print('<a href="create_reservation.html">Create</a>')
-    print('<a href="remove_reservation.html">Remove</a>')
+    print('<a href="remove_reservation_form.cgi">Remove</a>')
+    print('<a href="list_authorizations.cgi">Authorizations</a>')
 
 except Exception as e:
     # Print errors on the webpage if they occur

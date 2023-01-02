@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 import psycopg2, cgi
 import login
+
 form = cgi.FieldStorage()
-#getvalue uses the names from the form in previous page
-firstname = form.getvalue('firstname')
-surname = form.getvalue('surname')
 email = form.getvalue('email')
-rank = form.getvalue('rank')
 
 print('Content-type:text/html\n\n')
 print('<html>')
@@ -30,19 +27,17 @@ try:
     result = cursor.fetchall()
 
     if len(result) == 0:
-        cursor.execute("START TRANSACTION;")
-        cursor.execute("SET CONSTRAINTS ALL DEFERRED;")
-        insert_sailor = "INSERT INTO sailor VALUES(%(firstname)s, %(surname)s, %(email)s)"
-        cursor.execute(insert_sailor, {'firstname': firstname,'surname' : surname, 'email': email})
-
-        insert_sailor = "INSERT INTO {} VALUES(%(email)s)".format(rank)
-        cursor.execute(insert_sailor, {'email': email})
-
-        cursor.execute("COMMIT;")
-        connection.commit()
-        print('Create New Sailor: SUCCESS')
+        print('Sailor does not exist')
     else:
-        print('Sailor already exists')
+
+        cursor.execute("START TRANSACTION")
+        cursor.execute("SET CONSTRAINTS ALL DEFERRED")
+        delete_senior = "DELETE FROM senior WHERE email = %(email)s"
+        delete_junior = "DELETE FROM junior WHERE email = %(email)s"
+        delete_sailor = "DELETE FROM sailor WHERE email = %(email)s"
+        cursor.execute(delete_sailor, {'email': email})
+        connection.commit()
+        print('Delete Sailor: SUCESS')
 
     #End Connection
     cursor.close()

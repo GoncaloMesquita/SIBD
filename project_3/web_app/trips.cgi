@@ -10,16 +10,16 @@ print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservatio
 print('<div>')
 print('</head>')
 print('<body>')
-print('<h2>Sailors</h2>')
+print('<h2>Trips</h2>')
 connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
     
     # Listing options
-    print('<a href="list.cgi?mode=sailor">List</a>')
-    print('<a href="create_sailor.html">Create</a>')
-    print('<a href="remove_sailor.html">Remove</a>')
+    print('<a href="list.cgi?mode=trip">List</a>')
+    print('<a href="create_trip_form.cgi">Create</a>')
+    print('<a href="remove_trip_form.cgi">Remove</a>')
 
 except Exception as e:
     # Print errors on the webpage if they occur

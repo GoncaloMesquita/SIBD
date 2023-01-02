@@ -3,7 +3,7 @@
     <head>
         <title>SIBD Project</title>
         <div><h3>Menu</h3>
-            <a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a>
+            <a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations | <a href="trips.cgi">Trips</a>
         <div>
     </head>
     <body>
@@ -14,7 +14,11 @@
             <p>First Name: <input type="text" name="firstname" required></p>
             <p>Surname: <input type="text" name="surname" required></p>
             <p>email: <input type="text" name="email" required></p>
-
+            <p>Rank: <select id="rank" name="rank">
+                    <option value="junior">Junior</option>
+                    <option value="senior">Senior</option>
+            </select></p>
+                
         <p><input type="submit" value="Register"/></p>
 
         </form>
