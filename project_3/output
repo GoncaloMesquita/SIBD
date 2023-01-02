@@ -1,0 +1,69 @@
+ Exercice 3)
+ 
+ 1)Which country has more boats registered than any other?
+ 
+ Portugal,3
+
+
+2)List all the sailors that have at least two certificates.
+
+Jose,Santos,2
+
+3)Who are the sailors that have sailed to every location in 'Portugal'?
+
+santos@email.com
+
+4) List the sailors with the most skipped trips.
+
+Jose,Santos,7
+Cão,Diogo,1
+João,Silva,1
+Pedro,Cabral,1
+
+5)List the sailors with the longest duration of trips (sum of trip durations) for the same
+single reservation; display also the sum of the trips duration.
+
+santos@email.com,3
+pedrocabral@email.com,2
+diogocao@email.com,1
+joaosilva@email.com,1
+
+
+Exercice 6)
+
+6.1) The start date (i.e., per year, per month independently of year, and per exact date);
+
+2022,null,null,7
+2023,null,null,3
+null,3,null,1
+null,12,null,7
+null,1,null,1
+null,2,null,1
+null,null,2023-03-07,1
+null,null,2022-12-05,1
+null,null,2022-12-12,1
+null,null,2023-01-07,1
+null,null,2023-02-07,1
+null,null,2022-12-07,1
+null,null,2022-12-01,4
+
+
+6.2) The location of origin (i.e., per location within countries, per country, and in total).
+
+null,null,10
+PRT,Lisboa,1
+PRT,Porto,1
+ESP,Madrid,1
+PRT,Leiria,4
+ITA,Roma,2
+PRT,Albufeira,1
+ESP,null,1
+PRT,null,7
+ITA,null,2
+
+
+
+
+
+
+
