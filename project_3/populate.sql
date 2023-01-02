@@ -1,3 +1,5 @@
+
+-- Insert into Country
 INSERT INTO Country (name,flag,iso_code) VALUES ('Portugal','pt_flag','PRT');
 INSERT INTO Country (name,flag,iso_code) VALUES ('Spain','esp_flag','ESP');
 INSERT INTO Country (name,flag,iso_code) VALUES ('France','fr_flag','FRA');
@@ -100,7 +102,7 @@ INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-01', '2022-12-
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-04', '2022-12-05');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-05', '2022-12-06');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-06', '2022-12-07');
-INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-07', '2022-12-08');
+INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-07', '2022-12-10');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2022-12-12', '2022-12-13');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2023-01-07', '2023-01-08');
 INSERT INTO Date_interval (start_date, end_date) VALUES ('2023-02-07', '2023-02-08');
@@ -119,7 +121,7 @@ INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES
 INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES ('142359879', 'Portugal', '2023-01-07','2023-01-08', 'santos@email.com');
 INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES ('142359879', 'Portugal', '2023-02-07','2023-02-08', 'santos@email.com');
 INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES ('142359879', 'Portugal', '2023-03-07','2023-03-08', 'santos@email.com');
-INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES ('142359879', 'Portugal', '2022-12-07', '2022-12-08', 'santos@email.com');
+INSERT INTO Reservation (cni, country, start_date, end_date, responsible) VALUES ('142359879', 'Portugal', '2022-12-07', '2022-12-10', 'santos@email.com');
 
 --Inserting values into authorized
 INSERT INTO Authorised (sailor, cni, boat_country, start_date, end_date)  VALUES  ('pedrocabral@email.com','010101010', 'Germany', '2022-12-01','2022-12-02');
@@ -153,4 +155,4 @@ INSERT INTO Trip (takeoff, arrival ,insurance, cni , boat_country , reservation_
 INSERT INTO Trip (takeoff, arrival ,insurance, cni , boat_country , reservation_start_date, reservation_end_date, to_latitude, to_longitude, from_latitude, from_longitude,skipper) VALUES
     ('2023-03-07','2023-03-08', '121467','142359879', 'Portugal', '2023-03-07','2023-03-08', 37.101268, -8.674545, 39.743936, -8.807098,'santos@email.com');
 INSERT INTO Trip (takeoff, arrival ,insurance, cni , boat_country , reservation_start_date, reservation_end_date, to_latitude, to_longitude, from_latitude, from_longitude,skipper) VALUES
-    ('2022-12-07', '2022-12-08', '121467','142359879', 'Portugal', '2022-12-07', '2022-12-08',38.742751, -9.132196, 39.743936, -8.807098,'santos@email.com');
+    ('2022-12-07', '2022-12-10', '121467','142359879', 'Portugal', '2022-12-07', '2022-12-10',38.742751, -9.132196, 39.743936, -8.807098,'santos@email.com');
