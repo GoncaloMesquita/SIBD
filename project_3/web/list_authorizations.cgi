@@ -20,7 +20,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     cursor = connection.cursor()
     
     # Making query

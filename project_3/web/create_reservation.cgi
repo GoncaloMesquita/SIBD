@@ -23,7 +23,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     cursor = connection.cursor()
     
     verify_reserve = "SELECT * FROM reservation WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND country = %(country)s AND cni = %(cni)s"

@@ -31,7 +31,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     cursor = connection.cursor()
     
     verify_trip = "SELECT * FROM trip WHERE takeoff = %(takeoff)s AND reservation_start_date = %(r_start_date)s AND reservation_end_date = %(r_end_date)s  AND boat_country = %(boat_country)s AND cni = %(cni)s"

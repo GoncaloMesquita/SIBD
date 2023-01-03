@@ -22,7 +22,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     cursor = connection.cursor()
     
     verify_sailor = "SELECT * FROM sailor WHERE email = %(email)s"
