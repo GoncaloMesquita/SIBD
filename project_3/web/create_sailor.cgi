@@ -32,6 +32,7 @@ try:
     if len(result) == 0:
         cursor.execute("START TRANSACTION;")
         cursor.execute("SET CONSTRAINTS ALL DEFERRED;")
+        
         insert_sailor = "INSERT INTO sailor VALUES(%(firstname)s, %(surname)s, %(email)s)"
         cursor.execute(insert_sailor, {'firstname': firstname,'surname' : surname, 'email': email})
 
