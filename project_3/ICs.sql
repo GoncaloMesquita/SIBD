@@ -147,7 +147,3 @@ $$ language plpgsql;
 CREATE TRIGGER delete_reservation
 BEFORE DELETE ON reservation
 FOR EACH ROW EXECUTE PROCEDURE delete_reservation();
-
-
-
-
