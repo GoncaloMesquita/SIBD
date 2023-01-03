@@ -7,7 +7,6 @@ start_date = form.getvalue('start')
 end_date = form.getvalue('end')
 cni = form.getvalue('cni')
 country = form.getvalue('country')
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -25,7 +24,6 @@ print('<h3>Add New Sailor</h3>')
 print('<form action="add_authorization.cgi?start={}&end={}&country={}&cni={}" method="post">'.format(start_date,end_date,country,cni))
 print('<p>Email: <input type="text" name="email" required></p>')
 print('<p><input type="submit" value="Add"></p>')
-
 print('</form>')
 try:
     # Creating connection
@@ -36,7 +34,6 @@ try:
     sql = "SELECT * FROM authorised WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND boat_country = %(country)s AND cni = %(cni)s"
     cursor.execute(sql, {'start_date': start_date, 'end_date': end_date, 'country': country, 'cni': cni})
     result = cursor.fetchall()
-
     if len(result) == 0:
         print('There is no Authorised sailors for this Reservation')
     else:
@@ -54,11 +51,9 @@ try:
             print('</tr>')
         print('</table>')
         
-
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

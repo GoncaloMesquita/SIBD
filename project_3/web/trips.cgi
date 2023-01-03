@@ -21,7 +21,6 @@ try:
     print('<a href="list.cgi?mode=trip">List</a>')
     print('<a href="create_trip_form.cgi">Create</a>')
     print('<a href="remove_trip_form.cgi">Remove</a>')
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

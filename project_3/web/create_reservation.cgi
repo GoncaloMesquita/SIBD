@@ -8,7 +8,6 @@ end_date = form.getvalue('end_date')
 cni = form.getvalue('cni')
 country = form.getvalue('country')
 email = form.getvalue('email')
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -29,7 +28,6 @@ try:
     verify_reserve = "SELECT * FROM reservation WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND country = %(country)s AND cni = %(cni)s"
     cursor.execute(verify_reserve, {'start_date': start_date, 'end_date': end_date, 'country': country, 'cni': cni})
     result = cursor.fetchall()
-
     if len(result) == 0:
         # Verify if country exists
         verify_country = "SELECT * FROM country WHERE name = %(country)s"
@@ -57,7 +55,6 @@ try:
         if start_date > end_date:
             print("Invalid date interval")
             exit()
-
         verify_date = "SELECT * FROM date_interval WHERE start_date = %(start_date)s AND end_date = %(end_date)s"
         cursor.execute(verify_date, {'start_date': start_date, 'end_date': end_date})
         result = cursor.fetchall()
@@ -66,7 +63,6 @@ try:
             cursor.execute(insert_date, {'start_date': start_date, 'end_date': end_date})
             connection.commit()
         
-
         # After all verifications, create reservation
         insert_reserve = "INSERT INTO reservation VALUES(%(start_date)s, %(end_date)s, %(country)s, %(cni)s, %(email)s)"
         cursor.execute(insert_reserve, {'start_date' : start_date, 'end_date': end_date, 'country': country, 'cni': cni, 'email': email})
@@ -74,11 +70,9 @@ try:
         print('Create New Reservation: SUCCESS')
     else:
         print('Reservation already exists')
-
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

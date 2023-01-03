@@ -8,7 +8,6 @@ end_date = form.getvalue('end')
 country = form.getvalue('country')
 cni = form.getvalue('cni')
 sailor = form.getvalue('email')
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -29,7 +28,6 @@ try:
     sql = "SELECT * FROM authorised WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND boat_country = %(country)s AND cni = %(cni)s AND sailor = %(sailor)s"
     cursor.execute(sql, {'start_date': start_date, 'end_date': end_date, 'country': country, 'cni': cni, 'sailor': sailor})
     result = cursor.fetchall()
-
     if len(result) != 0:
         delete = "DELETE FROM authorised WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND boat_country = %(boat_country)s AND cni = %(cni)s AND sailor = %(sailor)s"
         cursor.execute(delete, {'start_date': start_date, 'end_date': end_date, 'boat_country': country, 'cni': cni, 'sailor': sailor})
@@ -40,7 +38,6 @@ try:
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

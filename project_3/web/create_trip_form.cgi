@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import psycopg2, cgi
 import login
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -13,31 +12,22 @@ print('</head>')
 print('<body>')
 print('<h2>Trips</h2>')
 print('<h3>Create New Trip</h3>')
-
 # Form
 print('<form action="create_trip.cgi" method="post">')
-
 print('<p>Takeoff date: <input type="date" id="takeoff" name="takeoff" required>')
 print('\tArrival date: <input type="date" id="arrival" name="arrival" requires></p>')
-
 print('<p>Insurance: <input type="text" id="insurance" name="insurance" required></p>')
-
 print('<p>From Location Latitude: <input type="text" id="from_lat" name="from_lat" required>')
 print('\tFrom Location Longitude: <input type="text" id="from_long" name="from_long" required></p>')
-
 print('<p>To Location Latitude: <input type="text" id="to_lat" name="to_lat" required>')
 print('\tTo Location Longitude: <input type="text" id="to_long" name="to_long" required></p>')
-
 print('<p>Skipper: <input type="text" id="skipper" name="skipper" required></p>')
-
 print('<p>Reservation start date: <input type="date" id="r_start_date" name="r_start_date" required>')
 print('\tReservation end date: <input type="date" id="r_end_date" name="r_end_date" requires></p>')
-
 print('<p>Boat Code: <input type="text" name="cni" required>')
 print('\tBoat Country: <input type="text" name="boat_country" required></p>')
 print('<input type="submit" value="Confirm"/>')
 print('</form>')
-
 connection = None
 try:
     # Creating connection
@@ -71,7 +61,6 @@ try:
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')
@@ -79,6 +68,5 @@ except Exception as e:
 finally:
     if connection is not None:
         connection.close()
-
 print('</body>')
 print('</html>')

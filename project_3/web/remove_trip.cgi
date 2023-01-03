@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import psycopg2, cgi
 import login
-
 form = cgi.FieldStorage()
 #getvalue uses the names from the form in previous page
 takeoff = form.getvalue('takeoff')
@@ -9,7 +8,6 @@ r_start_date = form.getvalue('r_start_date')
 r_end_date = form.getvalue('r_end_date')
 boat_country = form.getvalue('boat_country')
 cni = form.getvalue('cni')
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -28,12 +26,10 @@ try:
     cursor = connection.cursor()
     
     
-
     verify_trip = "SELECT * FROM trip WHERE takeoff = %(takeoff)s AND reservation_start_date = %(r_start_date)s AND reservation_end_date = %(r_end_date)s  AND boat_country = %(boat_country)s AND cni = %(cni)s"
     cursor.execute(verify_trip, {'takeoff': takeoff, 'r_start_date': r_start_date
                                 , 'r_end_date': r_end_date, 'boat_country': boat_country, 'cni': cni})
     result = cursor.fetchall()
-
     if len(result) == 0:
         print("Trip doesn't exist")
     else:
@@ -45,7 +41,6 @@ try:
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')
