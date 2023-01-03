@@ -15,6 +15,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
+    connection.autocommit = False
     
     # Listing options
     print('<a href="list.cgi?mode=trip">List</a>')
