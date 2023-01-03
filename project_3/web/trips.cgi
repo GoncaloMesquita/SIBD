@@ -7,7 +7,7 @@ print('<head>')
 print('<title>SIBD Project</title>')
 print('<div><h3>Menu</h3>')
 print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a> | <a href="trips.cgi">Trips</a>')
-print('<div>')
+print('</div>')
 print('</head>')
 print('<body>')
 print('<h2>Trips</h2>')
@@ -15,7 +15,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     
     # Listing options
     print('<a href="list.cgi?mode=trip">List</a>')

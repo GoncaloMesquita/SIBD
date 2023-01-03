@@ -15,7 +15,7 @@ print('<head>')
 print('<title>SIBD Project</title>')
 print('<div><h3>Menu</h3>')
 print('<a href="sailors.cgi">Sailors</a> | <a href="reservations.cgi">Reservations</a> | <a href="trips.cgi">Trips</a>')
-print('<div>')
+print('</div>')
 print('</head>')
 print('<body>')
 print('<h2>Reservation</h2>')
@@ -23,7 +23,7 @@ connection = None
 try:
     # Creating connection
     connection = psycopg2.connect(login.credentials)
-    connection.autocommit = False
+    # connection.autocommit = False
     cursor = connection.cursor()
     
     verify_reserve = "SELECT * FROM reservation WHERE start_date = %(start_date)s AND end_date = %(end_date)s AND country = %(country)s AND cni = %(cni)s"
