@@ -7,7 +7,6 @@ firstname = form.getvalue('firstname')
 surname = form.getvalue('surname')
 email = form.getvalue('email')
 rank = form.getvalue('rank')
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -26,30 +25,24 @@ try:
     cursor = connection.cursor()
     
     verify_sailor = "SELECT * FROM sailor WHERE email = %(email)s"
-
     cursor.execute(verify_sailor, {'email': email})
     result = cursor.fetchall()
-
     if len(result) == 0:
         cursor.execute("START TRANSACTION;")
         cursor.execute("SET CONSTRAINTS ALL DEFERRED;")
         
         insert_sailor = "INSERT INTO sailor VALUES(%(firstname)s, %(surname)s, %(email)s)"
         cursor.execute(insert_sailor, {'firstname': firstname,'surname' : surname, 'email': email})
-
         insert_sailor = "INSERT INTO {} VALUES(%(email)s)".format(rank)
         cursor.execute(insert_sailor, {'email': email})
-
         cursor.execute("COMMIT;")
         connection.commit()
         print('Create New Sailor: SUCCESS')
     else:
         print('Sailor already exists')
-
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

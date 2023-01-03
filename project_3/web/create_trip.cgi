@@ -15,8 +15,6 @@ from_long = form.getvalue('from_long')
 to_lat = form.getvalue('to_lat')
 to_long = form.getvalue('to_long')
 skipper = form.getvalue('skipper')
-
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -38,12 +36,10 @@ try:
     cursor.execute(verify_trip, {'takeoff': takeoff, 'r_start_date': r_start_date
                                 , 'r_end_date': r_end_date, 'boat_country': boat_country, 'cni': cni})
     result = cursor.fetchall()
-
     if len(result) == 0:
         insert_trip = "INSERT INTO trip VALUES(%(takeoff)s, %(arrival)s, %(insurance)s,\
                                                 %(from_latitude)s, %(from_longitude)s, %(to_latitude)s, %(to_longitude)s,\
                                                 %(skipper)s,%(r_start_date)s, %(r_end_date)s, %(boat_country)s, %(cni)s)"
-
         cursor.execute(insert_trip, {'takeoff': takeoff, 'arrival': arrival,'insurance':insurance,
                                     'from_latitude': from_lat, 'from_longitude': from_long,
                                     'to_latitude': to_lat, 'to_longitude': to_long, 'skipper': skipper,
@@ -52,11 +48,9 @@ try:
         print('Create New Trip: SUCCESS')
     else:
         print('Trip already exists')
-
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')

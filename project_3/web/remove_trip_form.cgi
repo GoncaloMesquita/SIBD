@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import psycopg2, cgi
 import login
-
 print('Content-type:text/html\n\n')
 print('<html>')
 print('<head>')
@@ -13,21 +12,15 @@ print('</head>')
 print('<body>')
 print('<h2>Trips</h2>')
 print('<h3>Remove Trip</h3>')
-
 # Form
 print('<form action="remove_trip.cgi" method="post">')
-
 print('<p>Takeoff: <input type="date" name="takeoff" required></p>')
-
 print('<p>Reservation start date: <input type="date" id="start_date" name="r_start_date" required>')
 print('\tReservation end date: <input type="date" id="end_date" name="r_end_date" requires></p>')
-
 print('<p>Boat Country: <input type="text" name="boat_country" required>')
 print('\tBoat Code: <input type="text" name="cni" required></p>')
-
 print('<p><input type="submit" value="Confirm"/></p>')
 print('</form>')
-
 connection = None
 try:
     # Creating connection
@@ -60,7 +53,6 @@ try:
     #End Connection
     cursor.close()
     connection.close()
-
 except Exception as e:
     # Print errors on the webpage if they occur
     print('<h1>An error occurred.</h1>')
@@ -68,6 +60,5 @@ except Exception as e:
 finally:
     if connection is not None:
         connection.close()
-
 print('</body>')
 print('</html>')
