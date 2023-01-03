@@ -24,8 +24,8 @@ try:
     cursor = connection.cursor()
     
     # Making query
-    sql = 'SELECT * FROM {};'.format(mode)
-    cursor.execute(sql)
+    sql = 'SELECT * FROM %(table)s;'
+    cursor.execute(sql, {'table': mode})
     result = cursor.fetchall()
     num = len(result)
     
