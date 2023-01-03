@@ -25,7 +25,7 @@ INSERT INTO Location (name,  latitude, longitude, country_name) VALUES ('Berlim'
 -- Inserting values into Sailor
 START TRANSACTION;
 SET CONSTRAINTS ALL DEFERRED;
-INSERT INTO Sailor (email, firstname, surname) VALUES ('joaosilva@email.com', 'João', 'Silva');
+INSERT INTO Sailor (email, firstname, surname) VALUES ('joaosilva@email.com', 'Joao', 'Silva');
 INSERT INTO Junior (email) VALUES ('joaosilva@email.com');
 
 
@@ -48,7 +48,7 @@ INSERT INTO Senior (email) VALUES ('pedrocabral@email.com');
 INSERT INTO Sailor (email, firstname, surname) VALUES ('vascogama@email.com', 'Vasco', 'Gama');
 INSERT INTO Senior (email) VALUES ('vascogama@email.com');
 
-INSERT INTO Sailor (email, firstname, surname) VALUES ('diogocao@email.com', 'Cão', 'Diogo');
+INSERT INTO Sailor (email, firstname, surname) VALUES ('diogocao@email.com', 'Cao', 'Diogo');
 INSERT INTO Senior (email) VALUES ('diogocao@email.com');
 
 INSERT INTO Sailor (email, firstname, surname) VALUES ('santos@email.com','Jose', 'Santos');
