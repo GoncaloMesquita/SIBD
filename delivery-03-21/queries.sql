@@ -35,7 +35,7 @@ GROUP BY s.email
 ORDER BY num_trips DESC;
 
 --5)List the sailors with the longest duration of trips (sum of trip durations) for the same
-single reservation; display also the sum of the trips duration.
+--single reservation; display also the sum of the trips duration.
 
 SELECT t.skipper, MAX(arrival - takeoff) AS total_duration
 FROM trip t
