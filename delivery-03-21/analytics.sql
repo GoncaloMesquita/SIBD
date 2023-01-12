@@ -1,4 +1,4 @@
---Exercice 6)
+--Exercice 6)e the total number of trips according to different groups depending on:
 
 --1)The start date (i.e., per year, per month independently of year, and per exact date);
 
